@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  height: 60px;
+  padding: 0 48px;
+  align-items: center;
+}
+
+.create-event-btn {
+  padding: 0 16px;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+  &__icon {
+    margin-right: 8px;
+    color: #149afa;
+  }
+}
+
+.navigation {
+  &__today-btn {
+    margin-left: 32px;
+    padding: 0 16px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  }
+
+  &__nav-icon {
+    font-size: 16px;
+    margin-left: 20px;
+  }
+
+  &__displayed-month {
+    margin-left: 10px;
+  }
+}
