@@ -46,4 +46,4 @@ export const months = [
   'December',
 ];
 
-export const round = (num) => (num > 15 ? Math.round(num / 15) * 15 : 15);
+export const round = (num) => (num > 15 ? Math.round(num / 15) * 15 : 0);

@@ -44,7 +44,7 @@ class Calendar extends Component {
   }
 
   render() {
-
+    console.log(this.state.style.top)
     const spanElem = <span className='red-line' style={this.state.style}><i className="fas fa-circle"></i></span>
     const { weekDates } = this.props;
     return (
