@@ -4,41 +4,49 @@ import "./modal.scss";
 
 class Modal extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       event: {
-        date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate() > 10 ? new Date().getDate() : `0${new Date().getDate()}`}`,
-      }
-    }
+        date: `${new Date().getFullYear()}-${
+          new Date().getMonth() + 1 < 10
+            ? `0${new Date().getMonth() + 1}`
+            : new Date().getMonth() + 1
+        }-${
+          new Date().getDate() > 10
+            ? new Date().getDate()
+            : `0${new Date().getDate()}`
+        }`,
+      },
+    };
   }
 
   handleChange = (e) => {
     this.setState({
       event: {
         ...this.state.event,
-        [e.target.name]: e.target.value
-      }
-    })
-  }
-
-
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
-    compareEvent(this.state.event)
-    this.props.togleVisibility()
-    this.props.getEventData()
-
-  }
+    compareEvent(this.state.event);
+    this.props.togleVisibility();
+    this.props.getEventData();
+  };
 
   render() {
-
     return (
       <div className="modal overlay">
         <div className="modal__content">
           <div className="create-event">
-            <button className="create-event__close-btn"
-              onClick={this.props.togleVisibility}>+</button>
+            <button
+              className="create-event__close-btn"
+              onClick={this.props.togleVisibility}
+            >
+              +
+            </button>
             <form className="event-form" onSubmit={this.onSubmit}>
               <input
                 type="text"
@@ -53,7 +61,8 @@ class Modal extends Component {
                   name="date"
                   className="event-form__field"
                   value={this.state.event.date}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange}
+                />
                 <input
                   type="time"
                   name="dateFrom"
@@ -74,9 +83,7 @@ class Modal extends Component {
                 className="event-form__field"
                 onChange={this.handleChange}
               ></textarea>
-              <button type="submit"
-                className="event-form__submit-btn"
-              >
+              <button type="submit" className="event-form__submit-btn">
                 Create
               </button>
             </form>

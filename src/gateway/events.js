@@ -1,6 +1,6 @@
-import { getDateTime, round } from '../utils/dateUtils.js';
+import { getDateTime, round } from "../utils/dateUtils.js";
 
-export const baseUrl = 'https://617e67ce2ff7e600174bd7b8.mockapi.io/events';
+export const baseUrl = "https://61f1a2e0072f86001749f2ec.mockapi.io/event";
 
 export const fetchData = (event) => {
   event.dateFrom = new Date(
@@ -13,22 +13,22 @@ export const fetchData = (event) => {
       round(new Date(getDateTime(event.date, event.dateTo)).getMinutes())
     )
   );
-  fetch(baseUrl, {
-    method: 'POST',
+  return fetch(baseUrl, {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(event),
   }).then((response) => {
     if (!response.ok) {
-      throw new Error('Failed to create event');
+      throw new Error("Failed to create event");
     }
   });
 };
 
 export const removeEvent = (id) => {
   fetch(`${baseUrl}/${id}`, {
-    method: 'DELETE',
+    method: "DELETE",
   }).then((response) => {
     if (!response.ok) {
       throw new Error(`Failed to delete event ${id}`);
@@ -61,28 +61,20 @@ export const compareEvent = (event) => {
     })
     .then((res) => {
       if (res.length > 0) {
-        console.log('incorrect time event', res);
+        console.log("incorrect time event", res);
         return;
       }
       fetchData(event);
     });
 };
 
-// export const removeEvent = (id) => {
-//   fetch(`${baseUrl}/${id}`)
-//     .then((resp) => resp.json())
-//     .then((json) => {
-//       const result =
-//         new Date(json.dateFrom).getHours() * 60 +
-//         new Date(json.dateFrom).getMinutes() -
-//         new Date().getHours() * 60 +
-//         new Date().getMinutes();
-//       return Math.abs(result) > 15;
-//     })
-//     .then((res) => {
-//       if (!res) {
-//         return;
-//       }
-//       remove(id);
-//     });
-// };
+export const getData = () =>
+  fetch(baseUrl)
+    .then((resp) => resp.json())
+    .then((result) => {
+      result.map((elem) => {
+        (elem.dateFrom = new Date(elem.dateFrom)),
+          (elem.dateTo = new Date(elem.dateTo));
+      });
+      return result;
+    });
