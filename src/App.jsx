@@ -3,7 +3,7 @@ import Header from "./components/header/Header.jsx";
 import Calendar from "./components/calendar/Calendar.jsx";
 import { getWeekStartDate, generateWeekRange } from "../src/utils/dateUtils.js";
 import Modal from "./components/modal/Modal.jsx";
-import { baseUrl, getData } from "./gateway/events.js";
+import { getData } from "./gateway/events.js";
 import "./common.scss";
 
 class App extends Component {

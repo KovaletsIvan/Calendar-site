@@ -96,6 +96,3 @@ class Modal extends Component {
 
 export default Modal;
 
-// const formData = [...new FormData(document.querySelector('.event-form'))]
-// .reduce((obj, [field, value]) => ({ ...obj, [field]: value }), {})
-// date: `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate() > 10 ? new Date().getDate() : `0${new Date().getDate()}`}`,
