@@ -42,30 +42,9 @@ export const compareEvent = (event) => {
       getDateTime(event.date, event.dateFrom).getHours() >
     6
   ) {
-    return;
+    throw new Error('Event can not be longet then 6 houers!')
   }
-  fetch(baseUrl)
-    .then((response) => response.json())
-    .then((json) => {
-      const result = json.filter(
-        (elem) =>
-          (new Date(elem.date).getDate() === new Date(event.date).getDate() &&
-            new Date(elem.dateFrom).getHours()) ===
-            getDateTime(event.date, event.dateFrom).getHours() ||
-          new Date(elem.dateTo).getHours() ===
-            getDateTime(event.date, event.dateFrom).getHours() ||
-          new Date(elem.dateTo).getHours() ===
-            getDateTime(event.date, event.dateTo).getHours()
-      );
-      return result;
-    })
-    .then((res) => {
-      if (res.length > 0) {
-        console.log("incorrect time event", res);
-        return;
-      }
-      fetchData(event);
-    });
+  fetchData(event);
 };
 
 export const getData = () =>

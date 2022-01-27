@@ -83,7 +83,7 @@ class Modal extends Component {
                 className="event-form__field"
                 onChange={this.handleChange}
               ></textarea>
-              <button type="submit" className="event-form__submit-btn">
+              <button type="submit" className="event-form__submit-btn" onClick={this.props.getEventData}>
                 Create
               </button>
             </form>
@@ -95,4 +95,3 @@ class Modal extends Component {
 }
 
 export default Modal;
-
